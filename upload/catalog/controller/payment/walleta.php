@@ -245,12 +245,14 @@ class ControllerPaymentWalleta extends Controller
 
     public function getPayerMobile()
     {
-        return isset($this->request->post['payer_mobile']) ? $this->request->post['payer_mobile'] : '';
+        return isset($this->request->post['payer_mobile']) ?
+            \Walleta\PersianText::toEnglishNumber($this->request->post['payer_mobile']) : '';
     }
 
     protected function getPayerNationalCode()
     {
-        return isset($this->request->post['payer_national_code']) ? $this->request->post['payer_national_code'] : '';
+        return isset($this->request->post['payer_national_code']) ?
+            \Walleta\PersianText::toEnglishNumber($this->request->post['payer_national_code']) : '';
     }
 
     protected function formatMoney($amount, $currency_code, $currency_value)
